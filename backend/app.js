@@ -8,9 +8,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/user",router); 
 app.use("/api/blog", blogRouter);
+require("dotenv").config({ path: "backend/config/config.env" });
 //http://localhost:5000/api/user/logon
 
-mongoose.connect("mongodb+srv://admin:mB69I02NoH4gYp0J@cluster0.bnjtttm.mongodb.net/Blog?retryWrites=true&w=majority"
+mongoose.connect(process.env.DB_URI
 )
 .then(()=>app.listen(5000))
 .then(()=>{
